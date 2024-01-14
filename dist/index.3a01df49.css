@@ -25,7 +25,6 @@
 .card {
   background-color: #f0f8ff;
   width: 200px;
-  height: 300px;
   margin: 15px;
   padding: 5px;
 }
@@ -41,7 +40,13 @@
 
 .resContainer {
   flex-wrap: wrap;
+  margin: 15px;
   display: flex;
+}
+
+.cardContent {
+  text-align: justify;
+  text-wrap: wrap;
 }
 
 /*# sourceMappingURL=index.3a01df49.css.map */

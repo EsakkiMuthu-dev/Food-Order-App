@@ -22,8 +22,6 @@
 }
 .card {
   width: 200px;
-  height: 300px;
-
   background-color: aliceblue;
   padding: 5px;
   margin: 15px;
@@ -41,4 +39,9 @@
 .resContainer {
   display: flex;
   flex-wrap: wrap;
+  margin: 15px;
+}
+.cardContent {
+  text-align: justify;
+  text-wrap: wrap;
 }
