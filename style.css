@@ -45,3 +45,8 @@
   text-align: justify;
   text-wrap: wrap;
 }
+
+.footer {
+  margin-top: 25px;
+  text-align: center;
+}
