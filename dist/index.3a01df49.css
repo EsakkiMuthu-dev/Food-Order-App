@@ -1,0 +1,47 @@
+.logo > img {
+  width: 100px;
+}
+
+.header {
+  border: 1px solid gray;
+  justify-content: space-between;
+  display: flex;
+}
+
+.nav > ul {
+  padding: 5px;
+  list-style: none;
+  display: flex;
+}
+
+.nav > ul > li {
+  margin: 5px;
+}
+
+.searchBar {
+  margin: 15px;
+}
+
+.card {
+  background-color: #f0f8ff;
+  width: 200px;
+  height: 300px;
+  margin: 15px;
+  padding: 5px;
+}
+
+.card:hover {
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+.resLogo {
+  width: 100%;
+}
+
+.resContainer {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+/*# sourceMappingURL=index.3a01df49.css.map */
