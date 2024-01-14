@@ -1317,7 +1317,7 @@ const Search = () => {
 };
 
 const ResCard = ({ resObj }) => {
-  console.log(resObj);
+  const { name, costForTwo, cloudinaryImageId, avgRating } = resObj?.info;
   return (
     <div className="card">
       <img
@@ -1325,13 +1325,13 @@ const ResCard = ({ resObj }) => {
         alt="Briyani"
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          resObj.info.cloudinaryImageId
+          cloudinaryImageId
         }
       />
-      <h3>{resObj.info.name} </h3>
-      <h4>{resObj.info.costForTwo}</h4>
+      <h3>{name} </h3>
+      <h4>{costForTwo}</h4>
       {/* <h4 className="cardContent">{resObj.info.cuisines.join(",")}</h4> */}
-      <h4>{resObj.info.avgRating + " stars "}</h4>
+      <h4>{avgRating + " stars "}</h4>
     </div>
   );
 };

@@ -4380,14 +4380,14 @@ const Search = ()=>{
 };
 _c1 = Search;
 const ResCard = ({ resObj })=>{
-    console.log(resObj);
+    const { name, costForTwo, cloudinaryImageId, avgRating } = resObj?.info;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "card",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 className: "resLogo",
                 alt: "Briyani",
-                src: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resObj.info.cloudinaryImageId
+                src: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId
             }, void 0, false, {
                 fileName: "app.js",
                 lineNumber: 1323,
@@ -4395,7 +4395,7 @@ const ResCard = ({ resObj })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: [
-                    resObj.info.name,
+                    name,
                     " "
                 ]
             }, void 0, true, {
@@ -4404,14 +4404,14 @@ const ResCard = ({ resObj })=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                children: resObj.info.costForTwo
+                children: costForTwo
             }, void 0, false, {
                 fileName: "app.js",
                 lineNumber: 1332,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                children: resObj.info.avgRating + " stars "
+                children: avgRating + " stars "
             }, void 0, false, {
                 fileName: "app.js",
                 lineNumber: 1334,
