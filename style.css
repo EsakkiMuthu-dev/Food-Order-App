@@ -50,3 +50,15 @@
   margin-top: 25px;
   text-align: center;
 }
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  background-color: aliceblue;
+}

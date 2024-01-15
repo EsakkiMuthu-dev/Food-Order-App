@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ResCard from "./ResCard";
 import { API_URL } from "../utils/constants";
+import Shimmer from "./Shimmer";
 
 const ResCardContainer = () => {
   const [listOfRes, setListOfRes] = useState([]);
@@ -33,6 +34,9 @@ const ResCardContainer = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  if (listOfRes.length === 0) {
+    return <Shimmer />;
+  }
 
   return (
     <>

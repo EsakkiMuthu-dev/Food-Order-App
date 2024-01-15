@@ -54,4 +54,16 @@
   margin-top: 25px;
 }
 
+.shimmer-container {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.shimmer-card {
+  background-color: #f0f8ff;
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+}
+
 /*# sourceMappingURL=index.3a01df49.css.map */
