@@ -1,10 +1,8 @@
-const Search = () => {
-  return (
-    <div className="searchBar">
-      <input type="text" style={{ margin: "5px" }} />
-      <button> Search </button>
-    </div>
-  );
-};
+const Search = () => (
+  <div className="searchBar">
+    <input type="text" style={{ margin: "5px" }} />
+    <button type="button"> Search </button>
+  </div>
+);
 
 export default Search;
