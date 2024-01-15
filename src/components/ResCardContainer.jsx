@@ -34,11 +34,9 @@ const ResCardContainer = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  if (listOfRes.length === 0) {
-    return <Shimmer />;
-  }
-
-  return (
+  return listOfRes.length === 0 ? (
+    <Shimmer />
+  ) : (
     <>
       <button
         className="filter"

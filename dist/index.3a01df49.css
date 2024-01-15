@@ -15,7 +15,8 @@
 }
 
 .nav > ul > li {
-  margin: 5px;
+  margin: 10px;
+  font-size: large;
 }
 
 .searchBar {
@@ -64,6 +65,10 @@
   width: 200px;
   height: 300px;
   margin: 10px;
+}
+
+.login {
+  padding: 0 15px;
 }
 
 /*# sourceMappingURL=index.3a01df49.css.map */
