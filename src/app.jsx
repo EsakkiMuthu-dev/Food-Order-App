@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./components/Header";
-import Search from "./components/Search";
 import ResCardContainer from "./components/ResCardContainer";
 import Footer from "./components/Footer";
 
 const AppLayout = () => (
   <div>
     <Header />
-    <Search />
     <ResCardContainer />
     <Footer />
   </div>

@@ -5,9 +5,12 @@ import Shimmer from "./Shimmer";
 
 const ResCardContainer = () => {
   const [listOfRes, setListOfRes] = useState([]);
+  const [displayRes, setDisplayRes] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
   const filterRes = () => {
     const filteredRes = listOfRes.filter((res) => res?.info.avgRating >= 4.4);
-    setListOfRes(filteredRes);
+    setDisplayRes(filteredRes);
   };
 
   const fetchData = async () => {
@@ -19,6 +22,10 @@ const ResCardContainer = () => {
           ?.restaurants
       );
       setListOfRes(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setDisplayRes(
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
@@ -34,10 +41,40 @@ const ResCardContainer = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const searchRes = (text) => {
+    if (text.trim().length === 0) {
+      setDisplayRes(listOfRes);
+      return;
+    }
+    const filteredRes = listOfRes.filter((res) => {
+      console.log(res.info.name);
+      return res?.info?.name.toLowerCase().includes(text.toLowerCase());
+    });
+    console.log(filteredRes);
+    setDisplayRes(filteredRes);
+  };
+
   return listOfRes.length === 0 ? (
     <Shimmer />
   ) : (
     <>
+      <div className="searchBar">
+        <input
+          type="text"
+          value={searchText}
+          style={{ margin: "5px" }}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            searchRes(e.target.value);
+          }}
+        />
+        <button type="button" onClick={searchRes}>
+          {" "}
+          Search{" "}
+        </button>
+      </div>
+
       <button
         className="filter"
         type="button"
@@ -50,7 +87,7 @@ const ResCardContainer = () => {
         Reset{" "}
       </button>
       <div className="resContainer">
-        {listOfRes.map((restaurant) => (
+        {displayRes.map((restaurant) => (
           <ResCard resObj={restaurant} key={restaurant?.info.id} />
         ))}
       </div>
