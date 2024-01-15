@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ResCard from "./ResCard";
 import { API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
@@ -88,7 +89,11 @@ const ResCardContainer = () => {
       </button>
       <div className="resContainer">
         {displayRes.map((restaurant) => (
-          <ResCard resObj={restaurant} key={restaurant?.info.id} />
+          <Link
+            key={restaurant?.info.id}
+            to={`/restaurant/${restaurant?.info.id}`}>
+            <ResCard resObj={restaurant} />
+          </Link>
         ))}
       </div>
     </>
