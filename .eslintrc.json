@@ -20,10 +20,11 @@
   "rules": {
     "semi": "warn",
     "eqeqeq": "warn",
-    "no-unused-vars": "error",
+    "no-unused-vars": "warn",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "no-unsafe-optional-chaining": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "no-console": "off"
   }
 }

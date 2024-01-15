@@ -1,26 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ResCard from "./ResCard";
-import restaurants from "../utils/mockData";
+import { API_URL } from "../utils/constants";
 
 const ResCardContainer = () => {
-  const [listOfRes, setListOfRes] = useState(restaurants);
+  const [listOfRes, setListOfRes] = useState([]);
   const filterRes = () => {
-    const filteredRes = listOfRes.filter((res) => {
-      console.log(res?.info.avgRating);
-      return res?.info.avgRating > 4;
-    });
-    console.log(filteredRes);
+    const filteredRes = listOfRes.filter((res) => res?.info.avgRating >= 4.4);
     setListOfRes(filteredRes);
   };
-  console.log(listOfRes);
+
+  const fetchData = async () => {
+    try {
+      const data = await fetch(API_URL);
+      const json = await data.json();
+      console.log(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setListOfRes(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const reset = () => {
+    fetchData();
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
-      <button className="filter" type="button" onClick={filterRes}>
+      <button
+        className="filter"
+        type="button"
+        style={{ padding: 5 }}
+        onClick={filterRes}>
         Top Rated Restaurants🍽️
       </button>
+      <button type="button" onClick={reset} style={{ padding: 5, margin: 10 }}>
+        {" "}
+        Reset{" "}
+      </button>
       <div className="resContainer">
-        {restaurants.map((restaurant) => (
+        {listOfRes.map((restaurant) => (
           <ResCard resObj={restaurant} key={restaurant?.info.id} />
         ))}
       </div>
