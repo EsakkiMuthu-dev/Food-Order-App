@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useRestarants from "../customHooks/useRestarants";
 import ResCard from "./ResCard";
-import { API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 
 const ResCardContainer = () => {
@@ -14,33 +14,35 @@ const ResCardContainer = () => {
     setDisplayRes(filteredRes);
   };
 
-  const fetchData = async () => {
-    try {
-      const data = await fetch(API_URL);
-      const json = await data.json();
-      console.log(
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setListOfRes(
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setDisplayRes(
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const data = await fetch(API_URL);
+  //     const json = await data.json();
+  //     console.log(
+  //       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+  //         ?.restaurants
+  //     );
+  //     setListOfRes(
+  //       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+  //         ?.restaurants
+  //     );
+  //     setDisplayRes(
+  //       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+  //         ?.restaurants
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const reset = () => {
-    fetchData();
-  };
+  const reset = () => {};
 
   useEffect(() => {
-    fetchData();
+    const data = useRestarants();
+    console.log("from use effect");
+    console.log(data);
+    setDisplayRes(data);
+    setListOfRes(data);
   }, []);
 
   const searchRes = (text) => {
