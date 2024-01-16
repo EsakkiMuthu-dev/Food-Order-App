@@ -71,4 +71,18 @@
   padding: 0 15px;
 }
 
+.userCard {
+  background-color: #faebd7;
+  width: 200px;
+  height: 325px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.userContainer {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+}
+
 /*# sourceMappingURL=index.3a01df49.css.map */
