@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [status, setStatus] = useState("Login");
+
+  const onlineStatus = useOnlineStatus();
 
   const updateStatus = () => {
     setStatus(status === "Login" ? "Logout" : "Login");
@@ -30,6 +33,8 @@ const Header = () => {
               {status}
             </button>
           </li>
+
+          <li>{onlineStatus ? " 🟢 " : " 🔴 "}</li>
         </ul>
       </div>
     </div>

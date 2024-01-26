@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import useRestarants from "../customHooks/useRestarants";
+// import { Link } from "react-router-dom";
 import ResCard from "./ResCard";
+import { API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const ResCardContainer = () => {
   const [listOfRes, setListOfRes] = useState([]);
@@ -14,35 +15,33 @@ const ResCardContainer = () => {
     setDisplayRes(filteredRes);
   };
 
-  // const fetchData = async () => {
-  //   try {
-  //     const data = await fetch(API_URL);
-  //     const json = await data.json();
-  //     console.log(
-  //       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-  //         ?.restaurants
-  //     );
-  //     setListOfRes(
-  //       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-  //         ?.restaurants
-  //     );
-  //     setDisplayRes(
-  //       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-  //         ?.restaurants
-  //     );
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const fetchData = async () => {
+    try {
+      const data = await fetch(API_URL);
+      const json = await data.json();
+      console.log(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setListOfRes(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setDisplayRes(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const reset = () => {};
+  const reset = () => {
+    fetchData();
+  };
 
   useEffect(() => {
-    const data = useRestarants();
-    console.log("from use effect");
-    console.log(data);
-    setDisplayRes(data);
-    setListOfRes(data);
+    fetchData();
   }, []);
 
   const searchRes = (text) => {
@@ -57,6 +56,12 @@ const ResCardContainer = () => {
     console.log(filteredRes);
     setDisplayRes(filteredRes);
   };
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus !== true)
+    return (
+      <h1> Looks Like you are offline! , check your internet connection</h1>
+    );
 
   return listOfRes.length === 0 ? (
     <Shimmer />
@@ -91,11 +96,10 @@ const ResCardContainer = () => {
       </button>
       <div className="resContainer">
         {displayRes.map((restaurant) => (
-          <Link
-            key={restaurant?.info.id}
-            to={`/restaurant/${restaurant?.info.id}`}>
-            <ResCard resObj={restaurant} />
-          </Link>
+          // <Link
+          //   key={restaurant?.info.id}
+          //   to={`/restaurant/${restaurant?.info.id}`}>
+          <ResCard resObj={restaurant} />
         ))}
       </div>
     </>
